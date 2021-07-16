@@ -16,13 +16,13 @@
 4. 平板关闭后重新打开
 
 ### 1. 功能模块表添加字段
-```
+```mysql
 ALTER TABLE `wcs_menu_dtl` ADD COLUMN `rf` bit(1) NULL COMMENT '是否是平板的' AFTER `order`;
 ```
 
 ### 2. 字典信息添加
-```
 
+```mysql
 -- 主表信息添加
 INSERT INTO `diction`(`id`, `type`, `valuetype`, `name`, `isadd`, `isedit`, `isdelete`, `authorizelevel`) VALUES (6, 0, 0, '版本信息', b'0', b'1', b'0', 1);
 INSERT INTO `diction`(`id`, `type`, `valuetype`, `name`, `isadd`, `isedit`, `isdelete`, `authorizelevel`) VALUES (7, 0, 1, '配置开关', b'0', b'1', b'0', 100);
@@ -34,7 +34,7 @@ INSERT INTO `diction_dtl`(`id`, `diction_id`, `code`, `name`, `int_value`, `bool
 
 ```
 
-```
+```mysql
 -- 功能模块配置信息更新
 -- 清空表数据后更新
 INSERT INTO `wcs_module`(`id`, `name`, `type`, `key`, `entity`, `brush`, `geometry`, `winctlname`, `memo`) VALUES (1, '主页', 0, 'Home', '', 'DarkPrimaryBrush', 'ConfigGeometry', 'HomeCtl', '启动调度自动打开');
@@ -74,4 +74,21 @@ INSERT INTO `wcs_module`(`id`, `name`, `type`, `key`, `entity`, `brush`, `geomet
 
 
 #21.06.20
+```mysql
 INSERT INTO `diction_dtl`(`id`, `diction_id`, `code`, `name`, `int_value`, `bool_value`, `string_value`, `double_value`, `uint_value`, `order`, `updatetime`) VALUES (10, 3, 'TileHaveNotSameGoods', '砖机左右工位品种不一致，无法复位转产', NULL, NULL, '砖机左右工位品种不一致，无法复位转产', NULL, NULL, NULL, NULL);
+```
+
+# **[2020-10-18 : 提前满砖警告]**
+
+## 报警添加线路字段，等级字段
+
+```mysql
+ALTER TABLE `warning` ADD COLUMN `level` TINYINT(3) UNSIGNED NULL COMMENT '等级';
+```
+
+## 报警字典添加等级
+
+```mysql
+ALTER TABLE `diction_dtl` ADD COLUMN `level` tinyint(3) UNSIGNED NULL COMMENT '等级';
+```
+

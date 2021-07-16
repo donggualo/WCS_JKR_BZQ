@@ -20,8 +20,7 @@ namespace resource.module.modulesql
         public List<Warning> QueryWarningList()
         {
             List<Warning> list = new List<Warning>();
-            string sql = string.Format("SELECT t.id, t.area_id, t.type, t.resolve, t.dev_id, t.trans_id, t.track_id, t.content," +
-                " t.createtime, t.resolvetime FROM warning AS t WHERE t.resolve = false ");
+            string sql = string.Format("SELECT t.* FROM warning AS t WHERE t.resolve = false ");
             DataTable dt = mSql.ExecuteQuery(@sql);
             if (!mSql.IsNoData(dt))
             {
@@ -63,9 +62,9 @@ namespace resource.module.modulesql
 
         internal bool AddWarning(Warning warn)
         {
-            string str = "INSERT INTO `warning`(`id`, `area_id`, `type`, `resolve`, `dev_id`, `trans_id`, `track_id`, `content`, `createtime`)" +
-                " VALUES('{0}', '{1}', '{2}', {3}, '{4}', '{5}', '{6}', '{7}', {8})";
-            string sql = string.Format(@str, warn.id, warn.area_id, warn.type, warn.resolve, warn.dev_id, warn.trans_id, warn.track_id, warn.content, GetTimeOrNull(warn.createtime));
+            string str = "INSERT INTO `warning`(`id`, `area_id`, `type`, `resolve`, `dev_id`, `trans_id`, `track_id`, `content`, `createtime`, `level`)" +
+                " VALUES('{0}', '{1}', '{2}', {3}, '{4}', '{5}', '{6}', '{7}', {8}, {9})";
+            string sql = string.Format(@str, warn.id, warn.area_id, warn.type, warn.resolve, warn.dev_id, warn.trans_id, warn.track_id, warn.content, GetTimeOrNull(warn.createtime), warn.level);
             int row = mSql.ExcuteSql(sql);
             return row >= 1;
         }

@@ -241,6 +241,11 @@ namespace resource.track
             return TrackList.FindAll(c => areadevtras.Exists(a => a.track_id == c.id));
         }
 
+        internal ushort GetTrackArea(ushort trackid)
+        {
+            return (ushort)(GetTrack(trackid)?.area ?? 0);
+        }
+
         public bool SetStockStatus(uint trackid, TrackStockStatusE goodstatus, out string result, string memo = "")
         {
             Track track = TrackList.Find(c => c.id == trackid);

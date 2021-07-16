@@ -14,5 +14,6 @@ namespace module
         public string content { set; get; }
         public DateTime? createtime { set; get; }
         public DateTime? resolvetime { set; get; }
+        public byte level { set; get; }
     }
 }
