@@ -123,6 +123,9 @@ namespace task.device
                         {
                             try
                             {
+
+                                refreshsend = false;
+
                                 if (task.Type != DeviceTypeE.下砖机) continue;
                                 if (task.DevStatus.Goods1 == 0 || task.DevStatus.Goods2 == 0) continue;
 
