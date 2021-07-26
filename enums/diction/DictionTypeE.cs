@@ -30,6 +30,13 @@
 
         public const string MinStockTime = nameof(MinStockTime);
         public const string FerryAvoidNumber = nameof(FerryAvoidNumber);
+
+        #region[流程超时]
+
+        public static string StepOverTime = nameof(StepOverTime);               //除【倒库中】，其他流程的超时时间（秒）
+        public static string SortingStockStepOverTime = nameof(SortingStockStepOverTime);               //倒库中流程的超时时间（秒）
+
+        #endregion
     }
 
     public static class DicSwitchTag

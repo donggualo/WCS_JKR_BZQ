@@ -62,10 +62,30 @@ namespace module.goods
         /// </summary>
         public bool IsSignalProcess { set; get; }
 
+        /// <summary>
+        /// 任务处于状态的时间
+        /// </summary>
+        public DateTime TransStausStayTime { set; get; }
+
         public bool IsSiteSame(StockTrans trans)
         {
             return take_track_id == trans.take_track_id || give_track_id == trans.give_track_id
                 || take_track_id == trans.give_track_id || give_track_id == trans.take_track_id;
+        }
+
+
+
+        /// <summary>
+        /// 判断任务处于
+        /// 1.状态是否处于该状态
+        /// 2.持续时间是否已经超过指定时间
+        /// </summary>
+        /// <param name="status"></param>
+        /// <param name="second"></param>
+        /// <returns></returns>
+        public bool IsInStatusOverTime(TransStatusE status, int second)
+        {
+            return TransStaus == status && DateTime.Now.Subtract(TransStausStayTime).TotalSeconds > second;
         }
     }
 }

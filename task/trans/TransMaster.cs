@@ -1314,7 +1314,7 @@ namespace task.trans
                                 {
                                     if (isload)
                                     {
-                                        PubMaster.Warn.AddTaskWarn(WarningTypeE.CarrierLoadNotSortTask, (ushort)trans.carrier_id, trans.id);
+                                        PubMaster.Warn.AddTaskWarn(trans.area_id, WarningTypeE.CarrierLoadNotSortTask, (ushort)trans.carrier_id, trans.id);
                                     }
 
                                     if (isnotload)
@@ -1348,7 +1348,7 @@ namespace task.trans
 
                             if (isload)
                             {
-                                PubMaster.Warn.AddTaskWarn(WarningTypeE.CarrierLoadSortTask, (ushort)trans.carrier_id, trans.id);
+                                PubMaster.Warn.AddTaskWarn(trans.area_id, WarningTypeE.CarrierLoadSortTask, (ushort)trans.carrier_id, trans.id);
                             }
 
                             if (isnotload)
