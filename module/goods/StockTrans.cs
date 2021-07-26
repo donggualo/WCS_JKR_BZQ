@@ -5,6 +5,10 @@ namespace module.goods
 {
     public class StockTrans
     {
+        public StockTrans()
+        {
+            TransStausStayTime = DateTime.Now;
+        }
         public uint id { set; get; }
         public byte trans_type { set; get; }
         public byte trans_status { set; get; }
@@ -86,6 +90,23 @@ namespace module.goods
         public bool IsInStatusOverTime(TransStatusE status, int second)
         {
             return TransStaus == status && DateTime.Now.Subtract(TransStausStayTime).TotalSeconds > second;
+        }
+
+
+        public string GetStatusTimeStr()
+        {
+            TimeSpan span = DateTime.Now.Subtract(TransStausStayTime);
+            if (span.TotalHours >= 1)
+            {
+                return string.Format("{0}时 {1}分 {2}秒", span.Hours, span.Minutes, span.Seconds);
+            }
+
+            if (span.TotalMinutes >= 1)
+            {
+                return string.Format("{0}分 {1}秒", span.Minutes, span.Seconds);
+            }
+
+            return string.Format("{0}秒", span.Seconds);
         }
     }
 }
