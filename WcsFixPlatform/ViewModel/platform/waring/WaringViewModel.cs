@@ -85,6 +85,10 @@ namespace wcs.ViewModel
                     case 1://取消任务
                         PubMaster.Warn.RemoveWarning(SelectedWarn.ID);
                         break;
+
+                    case 2://静音（降级）
+                        PubMaster.Warn.DownLevelWarning(SelectedWarn.ID);
+                        break;
                 }
             }
         }
@@ -102,7 +106,7 @@ namespace wcs.ViewModel
                 WarningView warn = WarnList.FirstOrDefault(c => c.ID == md.id);
                 if (warn != null)
                 {
-                    if(md.resolve)
+                    if (md.resolve)
                     {
                         WarnList.Remove(warn);
                     }

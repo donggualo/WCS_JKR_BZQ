@@ -103,6 +103,15 @@ namespace task
             }
         }
 
+        public void DownLevelWarning(uint warnid)
+        {
+            Warning warn = List.Find(c => c.id == warnid);
+            if (warn != null)
+            {
+                warn.level = 0;
+                SendMsg(warn);
+            }
+        }
         #endregion
 
         #region[设备警告]
