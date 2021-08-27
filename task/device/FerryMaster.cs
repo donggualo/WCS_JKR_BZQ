@@ -917,7 +917,7 @@ namespace task.device
             }
 
             // 同区域内其他同类型的摆渡车
-            List<FerryTask> ferries = DevList.FindAll(c => c.AreaId == task.AreaId && c.Type == task.Type && c.ID != task.ID);
+            List<FerryTask> ferries = DevList.FindAll(c => c.AreaId == task.AreaId && c.Type == task.Type && c.ID != task.ID && c.IsEnable);
             if (ferries == null || ferries.Count == 0)
             {
                 msg = "无车干扰";
